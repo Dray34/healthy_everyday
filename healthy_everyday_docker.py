@@ -21,14 +21,19 @@ def upload(username, password):
     option.add_argument('--disable-dev-shm-usage')
     # login
     driver = webdriver.Chrome(options=option)
+    # 打开网站，未登录，跳转到数字北林登陆
     driver.get(address)
     wait = WebDriverWait(driver, 60)
+
+    # 输入账号密码，点击登陆
     elem = driver.find_element_by_id('un')
     elem.send_keys(username)
     elem = driver.find_element_by_id('pd')
     elem.send_keys(password)
+    elem = wait.until(EC.element_to_be_clickable((By.ID, 'index_login_btn')))
+    elem.click()
 
-    # commit
+    # 登陆完成，重新输入地址进入报平安页面
     driver.get(address)
 
     wait.until(EC.frame_to_be_available_and_switch_to_it('formIframe'))

@@ -31,7 +31,6 @@ def upload(username, password):
     elem = driver.find_element_by_id('pd')
     elem.send_keys(password)
     elem = wait.until(EC.element_to_be_clickable((By.ID, 'index_login_btn')))
-    elem.click()
 
     # 登陆完成，重新输入地址进入报平安页面
     driver.get(address)

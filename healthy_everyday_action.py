@@ -11,7 +11,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# from out_every_day import click_select_list
+
+def click_select_list(my_driver, data_id, answer_position):
+    wait = WebDriverWait(my_driver, 60)
+    main_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@data-id='%s'][1]" % (data_id,))))
+    my_driver.execute_script("arguments[0].click();", main_button)
+    list_item = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@data-id='%s']/..//li[@rel='%d']/a" % (data_id, answer_position))))
+    my_driver.execute_script("arguments[0].click();", list_item)
 
 
 def upload(username, password):
@@ -33,19 +39,18 @@ def upload(username, password):
 
     wait.until(EC.frame_to_be_available_and_switch_to_it('formIframe'))
 
-    # click_select_list(driver, "TW1", 1)
-    # click_select_list(driver, "TW2", 1)
-    # click_select_list(driver, "TW3", 1)
+    click_select_list(driver, "TW1", 1)
+    click_select_list(driver, "TW2", 1)
+    click_select_list(driver, "TW3", 1)
 
-    # click_select_list(driver, "TW1", random.randint(2, 6))
-    # click_select_list(driver, "TW2", random.randint(2, 6))
-    # click_select_list(driver, "TW3", random.randint(2, 6))
+    click_select_list(driver, "TW1", random.randint(2, 6))
+    click_select_list(driver, "TW2", random.randint(2, 6))
+    click_select_list(driver, "TW3", random.randint(2, 6))
 
     driver.switch_to.default_content()
 
     commit = wait.until(EC.element_to_be_clickable((By.ID, 'commit')))
     commit.click()
-    # time.sleep(1000)
     driver.close()
 
 

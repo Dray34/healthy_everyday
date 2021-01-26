@@ -25,6 +25,7 @@ def upload(username, password):
     option.add_argument('--headless')
     option.add_argument('--no-sandbox')
     option.add_argument('--disable-dev-shm-usage')
+
     # login
     driver = webdriver.Chrome(options=option)
     driver.get(address)

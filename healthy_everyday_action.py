@@ -58,7 +58,7 @@ if __name__ == '__main__':
     dir_name = os.path.dirname(sys.argv[0])
     address = open(os.path.join(dir_name, 'address.txt')).readline()
     username = os.environ.get('ACTION_USERNAME')
-    password = os.environ.get('ACTION_AUTHKEY')
+    password = os.environ.get('ACTION_PASSWORD')
     print(datetime.today())
     try:
         upload(username, password)

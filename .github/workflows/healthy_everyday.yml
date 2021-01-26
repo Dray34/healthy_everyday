@@ -6,25 +6,26 @@ on:
 
 jobs:
 
-  build:
+  upload:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout codes
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v2
       - name: Set up Python3.8
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
           architecture: 'x64'
-
       - name: Install Selenium
         run: |
           python -m pip install --upgrade pip
           pip install selenium
-
       - name: Install Google Chrome
         run: |
-        chmod +x ./scripts/InstallChrome.sh
+          chmod +x ./scripts/InstallChrome.sh
           ./scripts/InstallChrome.sh
+      - name: Run Code
+        env:
+          ACTION_USERNAME: ${{ secrets.ACTION_USERNAME }}
+          ACTION_PASSWORD: ${{ secrets.ACTION_PASSWORD }}
+        run: |
+          python test.py

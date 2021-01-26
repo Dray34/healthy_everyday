@@ -55,8 +55,7 @@ def upload(username, password):
 
 
 if __name__ == '__main__':
-    dir_name = os.path.dirname(sys.argv[0])
-    address = open(os.path.join(dir_name, 'address.txt')).readline()
+    address = 'https://s.bjfu.edu.cn/tp_fp/view?m=fp#from=hall&serveID=99f0cf19-3ca4-4786-badb-521f0f734cad&act=fp/serveapply'
     username = os.environ.get('ACTION_USERNAME')
     password = os.environ.get('ACTION_PASSWORD')
     print(datetime.today())

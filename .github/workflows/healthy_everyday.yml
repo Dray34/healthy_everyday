@@ -23,8 +23,8 @@ jobs:
           pip install selenium
       - name: Install Google Chrome
         run: |
-          chmod +x ./scripts/InstallChrome.sh
-          ./scripts/InstallChrome.sh
+          chmod +x ./InstallChrome.sh
+          ./InstallChrome.sh
       - name: Run Code
         env:
           ACTION_USERNAME: ${{ secrets.ACTION_USERNAME }}

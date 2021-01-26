@@ -34,6 +34,8 @@ def upload(username, password):
     elem.send_keys(username)
     elem = driver.find_element_by_id('pd')
     elem.send_keys(password)
+    elem = wait.until(EC.element_to_be_clickable((By.ID, 'index_login_btn')))
+    elem.click()
 
     # commit
     driver.get(address)

@@ -4,7 +4,7 @@ on:
   push:
     branches: action
   schedule:
-    - cron: '15 17 * * *'
+    - cron: '00 17 * * *'
 
 jobs:
 

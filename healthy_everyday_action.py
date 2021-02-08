@@ -38,6 +38,7 @@ def upload(username, password):
     # 从文件中读出的password末尾自带空格，不需要点击登陆按钮
     elem = wait.until(EC.element_to_be_clickable((By.ID, 'index_login_btn')))
     elem.click()
+    driver.implicitly_wait(2)
 
     # 登陆成功，重新打开报平安网址
     driver.get(address)
